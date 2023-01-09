@@ -56,12 +56,7 @@ function draw() {
     stroke(0);
     square(90+i, 390, 60);
   }
-  
-  
-  
-  
-  
-  
+ 
   
   if(gameover){ 
     
@@ -92,9 +87,6 @@ function draw() {
     bombs.update();
   }
   
-  
-  
-  
   //falling pie
   if(random(1) < 0.05){ //add pie randomly, 1/10 time through draw, add new pie to game
     //where i can up level this: inc rand range, speed
@@ -118,10 +110,6 @@ function draw() {
         gameover=false;
       }
   }
-  
-  
-
-    
   
     for( let i = pies.length-1; i>=0; i--){ //taking elements out so making array backward
     
@@ -159,24 +147,8 @@ function draw() {
     }
       
      
-        
-        
-     
-      
-      
-   
     
-    
-    
-  
-  
-  
-  
-  
   plate.x = mouseX; //moving the plate with mouse 
   plate.show(); 
-  
-  
-  
-  
+ 
 }
