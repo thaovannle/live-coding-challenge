@@ -1,0 +1,15 @@
+//cloud 
+  if(random(1)<0.005){
+    cloud.push(new Cloud(random(-600,-400), random(100)));
+  }
+  for(let clouds of cloud){
+    clouds.drawcloud();
+    clouds.update();
+  }
+  
+  for(let i= cloud.length-1; i>=0; i--){
+    if(cloud[i].x > width+60 ){
+      cloud.splice(i,1);
+    }
+  }
+  
