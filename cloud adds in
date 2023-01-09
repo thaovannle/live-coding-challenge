@@ -1,14 +1,23 @@
+make a cloud.js file
+add cloud.js to index.html
+class Cloud, constructor (x.y), this.x, y, xspeed
+make drawCloud function, and things in
+make update function, x+=xspeed, xspeed +=0.002;
+if this.x > width+200, this.x=0;
+
+add cloud array to sketch
+
 //cloud 
-  if(random(1)<0.005){
-    cloud.push(new Cloud(random(-600,-400), random(100)));
+  if(random(1)<0.005){ 
+    cloud.push(new Cloud(random(-600,-400), random(100))); // x position from -600 to -400, and y position is at 100
   }
   for(let clouds of cloud){
-    clouds.drawcloud();
+    clouds.drawcloud(); 
     clouds.update();
   }
   
   for(let i= cloud.length-1; i>=0; i--){
-    if(cloud[i].x > width+60 ){
+    if(cloud[i].x > width+60 ){ 
       cloud.splice(i,1);
     }
   }
