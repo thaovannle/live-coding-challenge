@@ -9,8 +9,10 @@ let piShow = ' ';
 let digitsDiv;
 let digits= "3.";
 let piCounter = 0;
-
 let gameover = false;
+
+
+
 
 function preload(){
   pi = loadStrings('one-million.txt');
@@ -30,40 +32,64 @@ function setup() {
   digitsDiv.style('font-size', '64pt');
   
   piShow = pi.substring(0,2); //showing 2 digits on the screen so user knows what to get next
-  
- 
-  
-  
+
 } 
 
 function draw() {
   
-  //background of game
-  background(19, 74, 122);
-  
+  //the aesthetic part:>
+  background(19, 74, 122); //opaque of 15
+  //moon
   fill(255, 255, 153);
   noStroke();
   circle(55,60, 80);
+  //triangles
+  for(let i=0; i<width-100; i+=100){
+    fill(102, 51, 0);
+    stroke(0);
+    triangle(50+i, 360, 90+i, 330, 130+i, 360);
+  }
+  //square
+  for(let i=0; i<width-100; i+=100){
+    fill(242, 235, 188);
+    stroke(0);
+    square(90+i, 390, 60);
+  }
   
   
   
+  //game functions
   if(gameover){ 
     
     fill(255);
     textAlign(CENTER, CENTER);
     text("game over. L", width/2, height/2);
+    
+    //console points
+    fill(255);
+    textSize(48);
+    textAlign(CENTER, CENTER);
+    text(("ur score: "+ piCounter), width/2, height/2 +60);
     return;
   }
+
   
-  
+  //at the right top corner
   fill(255);
   textSize(48);
   text(piShow, width-64, 50);
   fill(0,255,0);
   text(piShow.charAt(0), width-64, 50);
   
+   fill(255);
+   textSize(48);
+   text(piCounter, 400, 50);
   
-  //should i make snow here?
+  
+  
+  
+  
+  
   
   //falling bomb
   if(random(1) < 0.001){ 
@@ -74,6 +100,10 @@ function draw() {
     bombs.thebomb(); 
     bombs.update();
   }
+  
+  
+  
+ 
   
   
   
@@ -94,15 +124,13 @@ function draw() {
     if(plate.gotbombed(bomb[j])){
       console.log('got bombed hehee');
       gameover=true;
-         
-      
-      } else{
+      } else if( bomb[j].y> height + bomb[j].r){
+        bomb.splice(j,1);
+      }else{
         gameover=false;
       }
   }
   
-
-    
   
     for( let i = pies.length-1; i>=0; i--){ //taking elements out so making array backward
     
@@ -124,7 +152,12 @@ function draw() {
         console.log(digit);
         
         
+       
+
+        
+        
       } else {
+        console.log('this number is incorrect:');
         console.log(digit);
         gameover= true;
       }
@@ -138,28 +171,13 @@ function draw() {
        pies.splice(i,1);
     }
     }
+  
       
      
-        
-        
-     
-      
-      
-   
-    
-    
-    
-  
-  
-  
-  
-  
   plate.x = mouseX; //moving the plate with mouse 
   plate.show(); 
   
+  //17, xuong dong
   
-  //the plate 
-  //rectMode(CENTER);
- // rect (mouseX, height-10, 100, 10); //change to arc for basket shape
   
 }
